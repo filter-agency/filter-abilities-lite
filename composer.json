@@ -1,0 +1,26 @@
+{
+	"name": "filter-agency/filter-abilities",
+	"description": "Exposes WordPress functionality as Abilities API abilities for AI agent interaction via MCP.",
+	"type": "wordpress-plugin",
+	"license": "GPL-2.0-or-later",
+	"require": {
+		"php": ">=7.4",
+		"stellarwp/telemetry": "^2.4",
+		"stellarwp/container-contract": "^1.0",
+		"lucatume/di52": "^3.0"
+	},
+	"extra": {
+		"strauss": {
+			"target_directory": "vendor-prefixed",
+			"namespace_prefix": "Filter\\Vendor\\",
+			"classmap_prefix": "Filter_Vendor_",
+			"constant_prefix": "FILTER_VENDOR_",
+			"packages": [
+				"stellarwp/telemetry",
+				"stellarwp/container-contract",
+				"lucatume/di52"
+			],
+			"delete_vendor_packages": true
+		}
+	}
+}

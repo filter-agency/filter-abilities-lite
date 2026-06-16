@@ -1,0 +1,22 @@
+name: Deploy to WordPress.org
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: WordPress.org plugin deploy
+        uses: 10up/action-wordpress-plugin-deploy@stable
+        env:
+          ASSETS_DIR: .wordpress-org
+          SVN_PASSWORD: ${{ secrets.WP_ORG_PASSWORD }}
+          SVN_USERNAME: ${{ secrets.WP_ORG_USERNAME }}
+          SLUG: filter-abilities
